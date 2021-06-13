@@ -1,8 +1,10 @@
-package ru.geekbrains.mynotes;
+package ru.geekbrains.mynotes.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import ru.geekbrains.mynotes.R;
 
 public class MainActivity extends AppCompatActivity {
 
