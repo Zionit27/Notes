@@ -3,9 +3,9 @@ package ru.geekbrains.mynotes.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StructureRepository {
-    public List<Structure> getStructures() {
-        ArrayList<Structure> result = new ArrayList<>();
-        return result;
-    }
+import ru.geekbrains.mynotes.R;
+
+public interface StructureRepository {
+
+    List<Structure> getStructures();
 }
