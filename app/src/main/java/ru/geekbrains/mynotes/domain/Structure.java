@@ -1,45 +1,51 @@
 package ru.geekbrains.mynotes.domain;
 
-import androidx.annotation.DrawableRes;
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.annotation.StringRes;
 
-public class Structure {
+public class Structure implements Parcelable {
 
     @StringRes
-    private int number;
     private int name;
-
-    @DrawableRes
     private int description;
-    private int date;
 
-    public Structure(int number, int name, int description, int date) {
-        this.number = date;
-        this.name = date;
-        this.description = date;
-        this.date = date;
+    public Structure(int name, int description) {
+        this.name = name;
+        this.description = description;
     }
 
-    public int getNumber() {
-        return number;
+    protected Structure(Parcel in) {
+        name = in.readInt();
     }
+
+    public static final Creator<Structure> CREATOR = new Creator<Structure>() {
+        @Override
+        public Structure createFromParcel(Parcel in) {
+            return new Structure(in);
+        }
+
+        @Override
+        public Structure[] newArray(int size) {
+            return new Structure[size];
+        }
+    };
 
     public int getName() {
         return name;
     }
-
     public int getDescription() {
         return description;
     }
 
-    public int getDate() {
-        return date;
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(name);
     }
 }
-
-
-//          1. Создайте класс данных со структурой заметок: название заметки, описание заметки, дата создания и т. п.
-//        2. Создайте фрагмент для вывода этих данных.
-//        3. Встройте этот фрагмент в активити. У вас должен получиться экран с заметками, который мы будем улучшать с каждым новым уроком.
-//        4. Добавьте фрагмент, в котором открывается заметка. По аналогии с примером из урока: если нажать на элемент списка в портретной
-//        ориентации — открывается новое окно, если нажать в ландшафтной — окно открывается рядом.
